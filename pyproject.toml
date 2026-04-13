@@ -1,0 +1,18 @@
+
+# Python packaging spec: https://packaging.python.org/en/latest/specifications/license-expression/
+[build-system]
+requires = ["hatchling", "hatch-nodejs-version>=0.3.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lyons"
+readme = "README.md"
+# https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-license
+license = "MIT"
+# only set a python version lower bound
+requires-python = ">=3.13"
+dependencies = []
+dynamic = ["version"]
+
+[tool.hatch.version]
+source = "nodejs"
