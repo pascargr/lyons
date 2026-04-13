@@ -1,0 +1,9 @@
+*
+!lyons/**/*.py
+!pyproject.toml
+!package.json
+!src
+!README.md
+!tsconfig.json
+!pnpm-lock.yaml
+!.gitignore
