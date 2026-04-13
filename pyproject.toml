@@ -1,7 +1,7 @@
 
 # Python packaging spec: https://packaging.python.org/en/latest/specifications/license-expression/
 [build-system]
-requires = ["hatchling", "hatch-nodejs-version>=0.3.2"]
+requires = ["hatchling", "hatch-nodejs-version>=0.3.2", "jupyterlab"]
 build-backend = "hatchling.build"
 
 [project]
@@ -16,3 +16,25 @@ dynamic = ["version"]
 
 [tool.hatch.version]
 source = "nodejs"
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder>=0.5"]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "lyons/labextension/static/style.js",
+    "lyons/labextension/package.json",
+]
+skip-if-exists = ["lyons/labextension/static/style.js"]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+build_cmd = "build:prod"
+npm = ["pnpm"]
+
+[tool.hatch.build.hooks.jupyter-builder.editable-build-kwargs]
+build_cmd = "build:dev"
+npm = ["pnpm"]
+source_dir = "src"
+build_dir = "lyons/labextension"
+
+[tool.hatch.build.targets.wheel.shared-data]
+"lyons/labextension" = "share/jupyter/labextensions/lyons"

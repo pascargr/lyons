@@ -9,7 +9,8 @@
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "dependencies": {
-        "@jupyterlab/application": ">=4.4.0"
+        "@jupyterlab/application": ">=4.4.0",
+        "@jupyterlab/apputils": ">=4.4.0"
     },
     "devDependencies": {
         "@jupyterlab/builder": ">=4.4.0",
@@ -18,5 +19,11 @@
     "jupyterlab": {
         "extension": true,
         "outputDir": "lyons/labextension"
+    }, 
+    "scripts": {
+        "build:prod": "tsc && jupyter labextension build .",
+        "build:dev": "tsc --sourceMap && jupyter labextension build --development True . ",
+        "clean": "rm -r lib tsconfig.tsbuildinfo lyons/labextension",
+        "watch": "tsc -w --sourceMap & jupyter labextension watch ."
     }
 }

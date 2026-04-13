@@ -1,9 +1,8 @@
-*
-!lyons/**/*.py
-!pyproject.toml
-!package.json
-!src
-!README.md
-!tsconfig.json
-!pnpm-lock.yaml
-!.gitignore
+.venv
+after
+before
+lyons/labextension
+tsconfig.tsbuildinfo
+node_modules
+**/*.whl
+lib
