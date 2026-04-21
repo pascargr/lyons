@@ -13,7 +13,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     ) => {
         console.log("testing again") 
         function createNotification() {
-            Notification.warning("Reminder: Files are for editing, Pubs are not.", {autoClose: 2000})
+            Notification.info("Only items in 'Files' are editable, items in 'Pubs' are read only.", {autoClose: 30000})
         }
         // timeout needed to allow pop up notification on the screen
         setTimeout(createNotification, 1000)
